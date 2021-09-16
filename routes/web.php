@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 Route::get('/', [VTPassController::class, 'index']);
+Route::get('/serviceId', [ServiceIdController::class, 'serviceID']);
