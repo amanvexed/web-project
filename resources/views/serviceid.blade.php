@@ -21,7 +21,8 @@
     {{    $content['product_type']}}
 
 
-    <a href="<a href="{{ route('serviceId.serviceVariation', ['serviceId'=>$content['serviceID']]) }}">">
+
+    <a href="{{ route('serviceId.serviceVariation', ['serviceId'=>$content['serviceID']]) }}">
         <img src="{{ $content['image'] }} " alt="{{ $content['name'] }}" >
       </a>
     @endforeach

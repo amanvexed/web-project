@@ -63,6 +63,6 @@ class ServiceController extends Controller
                 ]);
                 $body = $res->getBody();
                 $arr_body = json_decode($body,true);
-                return view('serviceid', ['data' => $arr_body]);
+                return view('buyproducts', ['data' => $arr_body]);
     }
 }
