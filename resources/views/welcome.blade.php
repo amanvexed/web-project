@@ -9,7 +9,7 @@
     </ul> -->
 
        @foreach ( $data['content'] as $content)
-         <a href="/serviceId?name={{ $content['identifier'] }}" class="href">
+            <a href="{{ route('serviceId.serviceID', ['serviceId'=>$content['identifier']]) }}">
             <button type="button" class="btn btn-primary btn-lg">{{ $content['name'] }}</button><br><br>
         </a>
         @endforeach

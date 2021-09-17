@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Helpers\VTHost;
 
 class VTPassController extends Controller
 {
     public function index()
     {
-        $username = env("VT_USER");
-        $pwd = env("VT_PWD");
-        $serviceCategoryEndpoint = env('VT_SERVICE_CATEGORY_ENDPOINT');
+        $username = VTHost::username();
+        $pwd = VTHost::pwd();
+        $serviceCategoryEndpoint = VTHost::VT_SERVICE_CATEGORY_ENDPOINT();
+
         $response = Http::get($serviceCategoryEndpoint,[
                             'username' => $username,
                             'pssword' => $pwd
