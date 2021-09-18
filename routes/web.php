@@ -25,3 +25,5 @@ Route::get('/service-variation/{serviceId}', [App\Http\Controllers\ServiceContro
 
 //Route::post('/buyproduct', [App\Http\Controllers\BuyProductsController::class, 'buyProducts']);//->name('service.product');
 Route::post('/productService', [App\Http\Controllers\BuyProductsController::class, 'buyProducts'])->name('buyproduct.service');
+
+Route::post('/purchaseProduct', [App\Http\Controllers\BuyProductsController::class, 'purchaseProduct'])->name('purchase.product');

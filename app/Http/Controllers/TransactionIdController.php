@@ -35,12 +35,23 @@ class TransactionIdController extends Controller
     }
 
     public function getTransactionId(){
+        $exist_in_table = "";
         $tran_id = $this->generateTransactionId(15);
-
-        //check if exist in table
         $exist_in_table = DB::table('transactionid')->where('transactionid', $tran_id)->value('id');
-        print($exist_in_table);
 
+        while($exist_in_table != ""){
+            $tran_id = $this->generateTransactionId(15);
+            //check if exist in table
+            $exist_in_table = DB::table('transactionid')->where('transactionid', $tran_id)->value('id');
+        }
+
+        //insert transaction Id in DB
+        $transRec = new TransactionId();
+        $transRec->transactionid = $tran_id;
+        $transRec->save();
+        //$resp = DB::insert('insert into transactionid (transactionid) values (?)', [$tran_id]);
+
+        return $tran_id;
     }
 
     /**

@@ -8,7 +8,7 @@
         public $serviceIdEndpoint;
         public $serviceVariationEndpoint;
         public $serviceCategoryEndpoint;
-
+        public $servicePurchaseProductEndpoint;
     public function __construct()
     {
        // $this->token = config('values.accessToken');
@@ -17,6 +17,8 @@
        $this->serviceIdEndpoint = env("VT_SERVICE_ID_ENDPOINT");//VTHost::VT_SERVICE_ID_ENDPOINT();
        $this->serviceVariationEndpoint = env("VT_SERVIVE_VARIATIONS");// VTHost::VT_SERVICE_VARIATIONS();
        $this->serviceCategoryEndpoint = env("VT_SERVICE_CATEGORY_ENDPOINT");
+       $this->servicePurchaseProductEndpoint = env("VT_SERVICE_PURCHASE_PRODUCT");
+
     }
 
     public static function username(){

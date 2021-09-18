@@ -65,6 +65,7 @@ class ServiceController extends Controller
                 ]);
                 $body = $res->getBody();
                 $arr_body = json_decode($body,true);
+                //dd($arr_body);
                 return view('buyproducts', ['data' => $arr_body]);
     }
 }
