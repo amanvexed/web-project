@@ -3,16 +3,20 @@
 
     class VTHost{
 
-        public static $username;
-        public static $pwd;
-        public static $VT_SERVICE_CATEGORY_ENDPOINT;
+        public $username;
+        public $pwd;
+        public $serviceIdEndpoint;
+        public $serviceVariationEndpoint;
+        public $serviceCategoryEndpoint;
 
     public function __construct()
     {
        // $this->token = config('values.accessToken');
-        $this->username = env("VT_USER");
-        $this->pwd =  env("VT_PWD");
-        $this->VT_SERVICE_CATEGORY_ENDPOINT = env('VT_SERVICE_CATEGORY_ENDPOINT');
+       $this->username = env("VT_USER");// VTHost::username();
+       $this->pwd = env("VT_PWD");//VTHost::pwd();
+       $this->serviceIdEndpoint = env("VT_SERVICE_ID_ENDPOINT");//VTHost::VT_SERVICE_ID_ENDPOINT();
+       $this->serviceVariationEndpoint = env("VT_SERVIVE_VARIATIONS");// VTHost::VT_SERVICE_VARIATIONS();
+       $this->serviceCategoryEndpoint = env("VT_SERVICE_CATEGORY_ENDPOINT");
     }
 
     public static function username(){
@@ -31,7 +35,7 @@
         return env("VT_SERVICE_ID_ENDPOINT");
     }
 
-    public static function VT_SERVIVE_VARIATIONS(){
+    public static function VT_SERVICE_VARIATIONS(){
         return env("VT_SERVIVE_VARIATIONS");
     }
 

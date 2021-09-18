@@ -11,7 +11,7 @@ use App\Helpers\VTHost;
 class ServiceController extends Controller
 {
     //
-    private $username;// = VTHost::username();
+   /* private $username;// = VTHost::username();
     private $pwd;// = VTHost::pwd();
     private $serviceIdEndpoint;// = VTHost::VT_SERVICE_ID_ENDPOINT();
     private $serviceVariation;
@@ -21,17 +21,18 @@ class ServiceController extends Controller
         $this->username = VTHost::username();
         $this->pwd = VTHost::pwd();
         $this->serviceIdEndpoint = VTHost::VT_SERVICE_ID_ENDPOINT();
-        $this->serviceVariationEndpoint = VTHost::VT_SERVIVE_VARIATIONS();
-    }
+        $this->serviceVariationEndpoint = VTHost::VT_SERVICE_VARIATIONS();
+    }*/
     public function serviceID($serviceId){
 
 
         //$serviceIdEndpoint = $serviceIdEndpoint."=".$serviceId;
         //echo($serviceIdEndpoint);
+        $VT_HOST = new VTHost();
 
         $client = new Client();
-        $res = $client->request('GET', $this->serviceIdEndpoint, [
-                                'auth' => [$this->username, $this->pwd],
+        $res = $client->request('GET', $VT_HOST->serviceIdEndpoint, [
+                                'auth' => [$VT_HOST->username, $VT_HOST->pwd],
                                 'query' => [
                                     'identifier' => $serviceId,
                                 ]
@@ -54,9 +55,10 @@ class ServiceController extends Controller
     }
 
     public function serviceVariation($serviceId){
+        $VT_HOST = new VTHost();
         $client = new Client();
-        $res = $client->request('GET', $this->serviceVariationEndpoint, [
-                                'auth' => [$this->username, $this->pwd],
+        $res = $client->request('GET', $VT_HOST->serviceVariationEndpoint, [
+                                'auth' => [$VT_HOST->username, $VT_HOST->pwd],
                                 'query' => [
                                     'serviceID' => $serviceId,
                                 ]
