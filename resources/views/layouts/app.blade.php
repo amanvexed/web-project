@@ -9,6 +9,7 @@
 
         <link href="https://bootswatch.com/5/minty/bootstrap.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://js.paystack.co/v1/inline.js"></script>
 
         <script>
             $('#variationSelect').on('change',function(){

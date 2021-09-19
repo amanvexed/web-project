@@ -33,11 +33,15 @@ class BuyProductsController extends Controller
                                 'query' => [
                                     'request_id' => $request->TransactionId,
                                     'serviceID' => $request->serviceID,
-                                    'billersCode' => $request->serviceID,
-                                    'variation_code'=> $request->serviceID,
-                                    'amount'=> $request->serviceID,
-                                    'phone'=> $request->serviceID,
+                                    'billersCode' => $request->mobilenumber,
+                                    'variation_code'=> $request->productname,
+                                    'amount'=> $request->amount,
+                                    'phone'=> $request->mobilenumber,
                                 ]
                 ]);
+                $body = $res->getBody();
+                $arr_body = json_decode($body,true);
+                //dd($arr_body);
+                //return view('buyproducts', ['data' => $arr_body]);
     }
 }

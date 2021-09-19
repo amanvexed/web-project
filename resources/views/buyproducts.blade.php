@@ -48,7 +48,7 @@
   <fieldset>
   <div class="form-group">
     <label class="col-form-label mt-4" for="selectProduct" >Amount</label>
-    <input type="number" class="form-control" placeholder="Enter Amount" name="amount" id="inputAmount">
+    <input type="tel" class="form-control" placeholder="Enter Amount" name="amount" id="inputAmount">
 </div>
   </fieldset>
 

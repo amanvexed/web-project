@@ -27,3 +27,9 @@ Route::get('/service-variation/{serviceId}', [App\Http\Controllers\ServiceContro
 Route::post('/productService', [App\Http\Controllers\BuyProductsController::class, 'buyProducts'])->name('buyproduct.service');
 
 Route::post('/purchaseProduct', [App\Http\Controllers\BuyProductsController::class, 'purchaseProduct'])->name('purchase.product');
+
+Route::post('/pay', [App\Http\Controllers\PaymentController::class, 'redirectToGateway'])->name('pay');
+
+Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'handleGatewayCallback']);
+
+
