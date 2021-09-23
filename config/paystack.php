@@ -35,4 +35,6 @@ return [
      */
     'merchantEmail' => getenv('MERCHANT_EMAIL'),
 
+    'initializePaymentURL'=>getenv('PAYSTACK_INITIALIZE_PAYMENT'),
+
 ];

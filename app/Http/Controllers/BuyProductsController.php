@@ -18,9 +18,9 @@ class BuyProductsController extends Controller
         //$content = $request->productname;
         //$VT_HOST = new VTHost();
         //print($content);
-        $trnId = new TransactionIdController();
-        $trnIdVal = $trnId->getTransactionId();
-        $request['TransactionId'] = $trnIdVal;
+        //$trnId = new TransactionIdController();
+        //$trnIdVal = $trnId->getTransactionId();
+        //$request['TransactionId'] = $trnIdVal;
         //dd($request);
         return view('purchase',['data'=>$request ]);
     }

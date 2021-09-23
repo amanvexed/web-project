@@ -55,6 +55,8 @@ class ServiceController extends Controller
     }
 
     public function serviceVariation($serviceId){
+        $trnId = new TransactionIdController();
+        $trnIdVal = $trnId->getTransactionId();
         $VT_HOST = new VTHost();
         $client = new Client();
         $res = $client->request('GET', $VT_HOST->serviceVariationEndpoint, [
@@ -65,6 +67,7 @@ class ServiceController extends Controller
                 ]);
                 $body = $res->getBody();
                 $arr_body = json_decode($body,true);
+                $arr_body['TransactionId'] = $trnIdVal;
                 //dd($arr_body);
                 return view('buyproducts', ['data' => $arr_body]);
     }

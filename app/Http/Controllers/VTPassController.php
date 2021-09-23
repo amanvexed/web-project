@@ -31,7 +31,11 @@ class VTPassController extends Controller
         //dd($jsonData);
     }
 
+    public function processService(Request $request){
 
+           print("1");
+           print(request()->serviceID);
+    }
 
 
 }

@@ -21,11 +21,13 @@
       @endphp
     </p>
       <p class="card-text"><b>Phone</b>: {{ $data['mobilenumber'] }}</p>
+      <p class="card-text"><b>Email</b>: {{ $data['email'] }}</p>
       <p class="card-text"><b>Amount</b>: {{ $data['amount'] }} {{ "+ ₦" }} {{ $data['convinience_fee'] }} (convenience fee)</p>
       <p class="card-text"><b>Total Payable Amount</b>:
         @php
             $total = (int)$data['amount'] + (int)$data['convinience_fee'];
             print($total);
+            $amount_in_kobo = $total * 100;
             print("<input type=\"hidden\" id=\"amount\" name=\"amount\" value=\"$total\">");
         @endphp
         </p>
@@ -41,6 +43,14 @@
 <input type="hidden" id="productname" name="productname" value="{{ $data['productname'] }}">
 <input type="hidden" id="TransactionId" name="TransactionId" value="{{ $data['TransactionId'] }}">
 <input type="hidden" id="mobilenumber" name="mobilenumber" value="{{ $data['mobilenumber'] }}">
+<input type="hidden" name="email" value="{{ $data['email'] }}">
+<input type="hidden" name="orderID" value="{{ $data['TransactionId'] }}">
+<input type="hidden" name="amount" value="@php
+    print($amount_in_kobo);
+@endphp"> {{-- required in kobo --}}
+<input type="hidden" name="currency" value="NGN">
+<input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value',]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
+<input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
 
 </form>
 

@@ -5,6 +5,10 @@
 
         public $username;
         public $pwd;
+        public $currency;
+        public $callback_url;
+        public $authorized_key;
+        public $paystackInitializePaymentEndpoint;
         public $serviceIdEndpoint;
         public $serviceVariationEndpoint;
         public $serviceCategoryEndpoint;
@@ -14,6 +18,10 @@
        // $this->token = config('values.accessToken');
        $this->username = env("VT_USER");// VTHost::username();
        $this->pwd = env("VT_PWD");//VTHost::pwd();
+       $this->currency = env("PAYSTACK_CURRENCY");//VTHost::pwd();
+       $this->callback_url = env("PAYSTACK_CALLBACK_URL");//VTHost::pwd();
+       $this->authorized_key  = env("PAYSTACK_SECRET_KEY");
+       $this->paystackInitializePaymentEndpoint  = env("PAYSTACK_INITIALIZE_PAYMENT");
        $this->serviceIdEndpoint = env("VT_SERVICE_ID_ENDPOINT");//VTHost::VT_SERVICE_ID_ENDPOINT();
        $this->serviceVariationEndpoint = env("VT_SERVIVE_VARIATIONS");// VTHost::VT_SERVICE_VARIATIONS();
        $this->serviceCategoryEndpoint = env("VT_SERVICE_CATEGORY_ENDPOINT");
