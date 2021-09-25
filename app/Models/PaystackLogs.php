@@ -13,8 +13,21 @@ class PaystackLogs extends Model
 
     protected $fillable = [
         'email',
+        'paystack_id',
         'reference',
         'amount',
-        'status'
+        'status',
+        'domain',
+        'reference',
+        'message',
+        'gateway_response',
+        'paystack_paid_at',
+        'paystack_created_at',
+        'channel',
+        'currency',
+        'paystack_status',
+        'ip_address',
+        'mobilenumber',
+        'full_response'
     ];
 }
