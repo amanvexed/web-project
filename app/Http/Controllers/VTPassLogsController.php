@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\VTPassLogs;
+use DateTime;
 use Illuminate\Http\Request;
 
 class VTPassLogsController extends Controller
@@ -42,9 +43,10 @@ class VTPassLogsController extends Controller
             $vtpassLogs->email = $request->email;
             $vtpassLogs->transactionid = $request->TransactionId;
             $vtpassLogs->serviceid = $request->serviceID;
-            $vtpassLogs->product = $request->productname;
+            $vtpassLogs->variationcode = $request->variationcode;
+            $vtpassLogs->product_name = $request->productname;
             $vtpassLogs->amount = $request->amount;
-            $vtpassLogs->mobilenumber = $request->mobilenumber;
+            $vtpassLogs->phone = $request->mobilenumber;
             $vtpassLogs->status = "VTPASS_PAYSTACK_PAYMENT_INITIALIZED";
             $vtpassLogs->save();
             //VTPassLogs::create($request->all());
@@ -96,12 +98,34 @@ class VTPassLogsController extends Controller
     }
 
 
-
-    public function updateRecord($transactionId, $text)
+    public function updateRecord($transactionId, $text, $arr_rec,$resp)
     {
-        //
+        //\
+        //dd($arr_rec);
         try{
-            VTPassLogs::where('transactionid',$transactionId)->update(['status' => $text]);
+            $date = new DateTime($arr_rec['transaction_date']['date']);
+            $n_dt =  $date->format('Y-m-d H:i:s');
+            VTPassLogs::where('transactionid',$transactionId)->update([
+                'vtpass_status' => $arr_rec['content']['transactions']['status'],
+                'unique_element' => $arr_rec['content']['transactions']['unique_element'],
+                'unit_price' => $arr_rec['content']['transactions']['unit_price'],
+                'quantity' => $arr_rec['content']['transactions']['quantity'],
+                'service_verification' => $arr_rec['content']['transactions']['service_verification'],
+                'channel' => $arr_rec['content']['transactions']['channel'],
+                'commission' => $arr_rec['content']['transactions']['commission'],
+                'total_amount' => $arr_rec['content']['transactions']['total_amount'],
+                'discount' => $arr_rec['content']['transactions']['discount'],
+                'type' => $arr_rec['content']['transactions']['type'],
+                'name' => $arr_rec['content']['transactions']['name'],
+                'convinience_fee' => $arr_rec['content']['transactions']['convinience_fee'],
+                'platform' => $arr_rec['content']['transactions']['platform'],
+                'response_description' => $arr_rec['response_description'],
+                'platform' => $arr_rec['content']['transactions']['platform'],
+                'method' => $arr_rec['content']['transactions']['method'],
+                'transaction_date' => $n_dt,
+                'full_response' => $resp,
+                'status' => $text,
+            ]);
         } catch (\Illuminate\Database\QueryException $exception) {
             // You can check get the details of the error using `errorInfo`:
             //$errorInfo = $exception->errorInfo;

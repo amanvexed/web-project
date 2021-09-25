@@ -29,7 +29,7 @@ class PaymentController extends Controller
             //return $paystack->getAuthorizationUrl()->redirectNow();
 
             //Log into VTPass DB
-            $this->insertIntoVTPass($request);
+            $this->insertIntoVTPassLog($request);
 
             $redirect_url = $paystack->getPaystackValidationURL();
             //return redirect()->away($redirect_url);
@@ -60,7 +60,7 @@ class PaymentController extends Controller
     }
 
 
-    public function insertIntoVTPass(Request $request){
+    public function insertIntoVTPassLog(Request $request){
         $vtpasslogscontroller = new VTPassLogsController();
         $vtpasslogscontroller->store($request);
     }

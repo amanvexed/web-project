@@ -18,6 +18,7 @@
           $pn = explode("#", $data['productname']);
           print($pn[1]);
           print("<input type=\"hidden\" id=\"serviceID\" name=\"serviceID\" value=\"$srvId\">");
+          print("<input type=\"hidden\" id=\"variationcode\" name=\"variationcode\" value=\"$pn[0]\">");
       @endphp
     </p>
       <p class="card-text"><b>Phone</b>: {{ $data['mobilenumber'] }}</p>

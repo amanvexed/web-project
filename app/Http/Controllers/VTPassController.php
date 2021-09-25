@@ -74,7 +74,7 @@ class VTPassController extends Controller
                 $resp_status = $arr_body['data']['status'];
                 if($resp_status == "success"){
                     //process vtpass product for customer
-
+                    $this->purchaseVTPassProduct($reference);
                     //return true;
                 }else{
                     //return false;
@@ -99,16 +99,14 @@ class VTPassController extends Controller
     }
 
 
-    public function processVTPassProduct($reference)
+    public function purchaseVTPassProduct($reference)
     {
         # code...
-
+        $buyproduct = new BuyProductsController();
+        $buyproduct->purchaseProduct();
 
     }
 
 
-    public function updateVTPass($transactionId, $text){
-        $vtpasslogscontroller = new VTPassLogsController();
-        $vtpasslogscontroller->updateRecord($transactionId,$text);
-    }
+
 }

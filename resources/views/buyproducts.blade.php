@@ -19,6 +19,7 @@
       @endforeach
     </select>
 
+    <input type="hidden" id="servicename" name="servicename" value="{{ $data['content']['ServiceName'] }}">
     <input type="hidden" id="serviceID" name="serviceID" value="{{ $data['content']['serviceID'] }}">
     <input type="hidden" id="convinience_fee" name="convinience_fee" value="{{ $data['content']['convinience_fee'] }}">
 
