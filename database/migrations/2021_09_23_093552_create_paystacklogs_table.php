@@ -17,9 +17,20 @@ class CreatePaystacklogsTable extends Migration
             $table->increments('id');
             $table->string('email');
             $table->string('reference');
-            //$table->string('access_code')->nullable();
+            $table->string('paystack_id');
             $table->string('amount');
             $table->string('status');
+            $table->string('paystack_status');
+            $table->string('domain');
+            $table->string('message')->nullable();
+            $table->string('gateway_response');
+            $table->dateTime('paystack_paid_at');
+            $table->dateTime('paystack_created_at');
+            $table->string('channel');
+            $table->string('currency');
+            $table->string('ip_address');
+            $table->string('mobilenumber')->nullable();
+            $table->json("full_response");
             $table->timestamps();
         });
     }
